@@ -4,7 +4,11 @@
   "description": "90DaysToSlay - Sales coaching by Jessica Allen",
   "scripts": {
     "build": "npx @11ty/eleventy",
-    "start": "npx @11ty/eleventy --serve"
+    "start": "npx @11ty/eleventy --serve",
+    "test:compare": "npx playwright test --config=tests/playwright.config.ts",
+    "test:compare:visual": "npx playwright test visual --config=tests/playwright.config.ts",
+    "test:compare:content": "npx playwright test content --config=tests/playwright.config.ts",
+    "test:compare:report": "npx playwright show-report tests/reports/playwright-report"
   },
   "repository": {
     "type": "git",
@@ -20,5 +24,11 @@
   "homepage": "https://github.com/90DaysToSlay/90daystoslay.github.io#readme",
   "dependencies": {
     "@11ty/eleventy": "^3.1.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "diff": "^8.0.4",
+    "pixelmatch": "^7.1.0",
+    "pngjs": "^7.0.0"
   }
 }
