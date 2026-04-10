@@ -1,0 +1,26 @@
+:root {
+  --color-purple: #5B0088;
+  --color-pink: #FF66C4;
+  --color-pink-dark: #ed258b;
+  --color-yellow: #FFE23C;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray-light: #f5f5f5;
+  --color-gray: #666666;
+
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Lato', sans-serif;
+  --font-accent: 'Open Sans', sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  --max-width: 1200px;
+  --border-radius: 8px;
+  --border-radius-lg: 16px;
+}

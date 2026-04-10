@@ -1,0 +1,24 @@
+{
+  "name": "90daystoslay",
+  "version": "1.0.0",
+  "description": "90DaysToSlay - Sales coaching by Jessica Allen",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/90DaysToSlay/90daystoslay.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/90DaysToSlay/90daystoslay.github.io/issues"
+  },
+  "homepage": "https://github.com/90DaysToSlay/90daystoslay.github.io#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.5"
+  }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ description | default: site.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ title }} | {{ site.title }}">
+  <meta property="og:description" content="{{ description | default: site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ site.url }}/assets/images/logo-hero.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/variables.css">
+  <link rel="stylesheet" href="/assets/css/reset.css">
+  <link rel="stylesheet" href="/assets/css/typography.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "{{ site.title }}",
+    "description": "{{ site.description }}",
+    "url": "{{ site.url }}",
+    "telephone": "{{ site.phone }}",
+    "email": "{{ site.email }}",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Austin",
+      "addressRegion": "TX"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "{{ site.author }}"
+    },
+    "sameAs": [
+      "{{ site.social.linkedin }}",
+      "{{ site.social.youtube }}",
+      "{{ site.social.facebook }}"
+    ]
+  }
+  </script>
+</head>
+<body>
+  {% include "partials/header.liquid" %}
+
+  <main>
+    {{ content }}
+  </main>
+
+  {% include "partials/footer.liquid" %}
+
+  <script>
+    document.querySelector('.nav__toggle').addEventListener('click', function () {
+      document.querySelector('.nav__links').classList.toggle('nav__links--open');
+    });
+  </script>
+</body>
+</html>

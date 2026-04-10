@@ -1,0 +1,90 @@
+---
+layout: layouts/base.liquid
+title: "Sales Coaching That Slays"
+description: "Right now, you're 90 minutes away from slaying your sales. Sales coaching and consulting by Jessica Allen in Austin, TX."
+---
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <img src="/assets/images/logo-hero.png" alt="#90DaysToSlay" class="hero__logo" width="400" height="200">
+    <h1>#90DaysToSlay Is For You</h1>
+    <p>Hey there, friend. I'm so glad you're here.</p>
+    <a href="{{ site.calendlyGeneral }}" target="_blank" rel="noopener" class="btn btn--pink btn--lg">Book A Vibe Check With Jessica</a>
+  </div>
+</section>
+
+<!-- Intro + Video -->
+<section class="section">
+  <div class="container text-center">
+    <h2 class="text-purple">Sales Doesn't Have to Be Cringe</h2>
+    <p style="max-width: 800px; margin: var(--space-md) auto;">
+      Right now, you're 90 minutes away from slaying your sales... for real. What does it even mean to "slay" in business? It means cutting through the noise, ditching the cringe, and tackling the challenges that have been slowing your revenue roll. It means stepping into the kind of clarity and confidence your business actually deserves.
+    </p>
+    <p style="max-width: 800px; margin: 0 auto var(--space-md);">
+      With #90DaysToSlay, you and I will build a killer strategy in just 90 minutes — laser-focused on transforming your pipeline and fixing the stuff that's been eating your margins alive. Spoiler alert: it's going to be a good time.
+    </p>
+    <p style="max-width: 800px; margin: 0 auto var(--space-lg);">
+      Want traction? Want momentum? Want revenue that doesn't make you want to scream into a pillow? Book a vibe check. Let's get you slaying for real.
+    </p>
+
+    {% youtube "T5IDbg5q7Cs" %}
+
+    <div style="margin-top: var(--space-xl);">
+      <a href="{{ site.calendlyGeneral }}" target="_blank" rel="noopener" class="btn btn--pink btn--lg">Book A Vibe Check</a>
+    </div>
+  </div>
+</section>
+
+<!-- Qualification -->
+<section class="section section--purple">
+  <div class="container text-center">
+    <h2>Slaying might not be your jam if:</h2>
+    <div style="max-width: 600px; margin: var(--space-lg) auto 0; text-align: left; font-size: 1.1rem; line-height: 2;">
+      <p>❌ You love cold-calling strangers at dinner time</p>
+      <p>❌ You think "always be closing" is a personality trait</p>
+      <p>❌ You believe cringe scripts are the answer</p>
+      <p>❌ You're not ready to ditch what isn't working</p>
+    </div>
+    <p style="margin-top: var(--space-lg); font-size: 1.2rem; font-weight: 700;">
+      Still here? Good. You're one of the cool ones. 😎
+    </p>
+  </div>
+</section>
+
+<!-- Bet On Your Business -->
+<section class="section">
+  <div class="container text-center">
+    <h2 class="text-purple">Bet On Your Business</h2>
+    <p style="max-width: 700px; margin: var(--space-md) auto var(--space-lg);">
+      You didn't start your business to be mediocre. You started it to build something that matters. Let's make sure your sales strategy matches your ambition.
+    </p>
+    <a href="{{ site.calendlyGeneral }}" target="_blank" rel="noopener" class="btn btn--purple btn--lg">Book My Slay Sesh NOW!</a>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="section section--light">
+  <div class="container">
+    <h2 class="text-center text-purple" style="margin-bottom: var(--space-xl);">Ready To Slay? Pick Your Path.</h2>
+    <div class="grid grid--3">
+      {% for item in pricing %}
+      {% include "partials/pricing-card.liquid", item: item %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+{% include "partials/testimonials.liquid" %}
+
+<!-- Final CTA -->
+<section class="section section--pink">
+  <div class="container text-center">
+    <h2 style="color: var(--color-white);">Ready to Stop the Cringe?</h2>
+    <p style="color: var(--color-white); font-size: 1.2rem; margin-bottom: var(--space-lg);">
+      Let's build a sales strategy that actually feels good.
+    </p>
+    <a href="{{ site.calendlyGeneral }}" target="_blank" rel="noopener" class="btn btn--white btn--lg">Book A Vibe Check</a>
+  </div>
+</section>

@@ -1,0 +1,41 @@
+[
+  {
+    "title": "90 Minute Session",
+    "price": "$3,500",
+    "features": [
+      "One 90-minute laser-focused strategy session",
+      "Custom sales pipeline audit",
+      "Actionable game plan you can use immediately",
+      "Follow-up email with notes and next steps"
+    ],
+    "cta": "Book My Slay Sesh",
+    "url": "https://calendly.com/90daystoslay/"
+  },
+  {
+    "title": "90 Day Program",
+    "price": "$9,500",
+    "features": [
+      "Full 90-day sales transformation program",
+      "Weekly strategy sessions",
+      "Custom sales playbook for your business",
+      "Pipeline optimization and tracking",
+      "Slack access for between-session support"
+    ],
+    "cta": "Let's Slay for 90 Days",
+    "url": "https://calendly.com/90daystoslay/"
+  },
+  {
+    "title": "Annual Program",
+    "price": "$18,000",
+    "features": [
+      "Everything in the 90 Day Program",
+      "12 months of ongoing strategy support",
+      "Quarterly business reviews",
+      "Team training sessions included",
+      "Priority access and VIP support",
+      "Custom CRM and process setup"
+    ],
+    "cta": "Go All In",
+    "url": "https://calendly.com/90daystoslay/"
+  }
+]

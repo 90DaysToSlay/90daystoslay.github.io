@@ -1,0 +1,10 @@
+<div class="pricing-card">
+  <h3 class="pricing-card__title">{{ item.title }}</h3>
+  <p class="pricing-card__price">{{ item.price }}</p>
+  <ul class="pricing-card__features">
+    {% for feature in item.features %}
+    <li>{{ feature }}</li>
+    {% endfor %}
+  </ul>
+  <a href="{{ item.url }}" target="_blank" rel="noopener" class="btn btn--pink">{{ item.cta }}</a>
+</div>
