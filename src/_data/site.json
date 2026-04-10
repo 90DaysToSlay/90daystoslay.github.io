@@ -1,17 +1,3 @@
 {
-  "title": "#90DaysToSlay",
-  "description": "Sales coaching and consulting by Jessica Allen. Cut through the noise, ditch the cringe, and slay your sales.",
-  "url": "https://www.90daystoslay.biz",
-  "author": "Jessica Allen",
-  "location": "Austin, TX",
-  "phone": "512-981-8669",
-  "email": "jessica@90daystoslay.biz",
-  "calendlyGeneral": "https://calendly.com/90daystoslay/",
-  "calendlySpeaker": "https://calendly.com/90daystoslay/business_besties",
-  "social": {
-    "facebook": "https://www.facebook.com/profile.php?id=61555410304866",
-    "linkedin": "https://www.linkedin.com/in/jessica--allen/",
-    "youtube": "https://www.youtube.com/@90DaysToSlay",
-    "googleReviews": "https://share.google/5cQFlH0JLQtfB38zR"
-  }
+  "url": "https://www.90daystoslay.biz"
 }

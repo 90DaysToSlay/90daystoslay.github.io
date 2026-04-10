@@ -1,66 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }} | {{ site.title }}</title>
-  <meta name="description" content="{{ description | default: site.description }}">
-  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="{{ title }} | {{ site.title }}">
-  <meta property="og:description" content="{{ description | default: site.description }}">
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7COpen%20Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7CMontserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7CRoboto:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" media="print" onload="this.media='all'">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Lato:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7COpen%20Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7CMontserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7CRoboto:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap">
+  <link rel="stylesheet" href="/assets/css/entry.css">
+  <link rel="stylesheet" href="/assets/css/button.css">
+  <link rel="stylesheet" href="/assets/css/ghl-styles.css">
+  <link rel="icon" href="/assets/images/favicon.ico">
+  <meta name="title" content="{{ title }}">
+  <meta name="description" content="{{ description }}">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
   <meta property="og:type" content="website">
   <meta property="og:image" content="{{ site.url }}/assets/images/logo-hero.png">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/assets/css/variables.css">
-  <link rel="stylesheet" href="/assets/css/reset.css">
-  <link rel="stylesheet" href="/assets/css/typography.css">
-  <link rel="stylesheet" href="/assets/css/layout.css">
-  <link rel="stylesheet" href="/assets/css/components.css">
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "{{ site.title }}",
-    "description": "{{ site.description }}",
-    "url": "{{ site.url }}",
-    "telephone": "{{ site.phone }}",
-    "email": "{{ site.email }}",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Austin",
-      "addressRegion": "TX"
-    },
-    "founder": {
-      "@type": "Person",
-      "name": "{{ site.author }}"
-    },
-    "sameAs": [
-      "{{ site.social.linkedin }}",
-      "{{ site.social.youtube }}",
-      "{{ site.social.facebook }}"
-    ]
-  }
-  </script>
+  <meta name="author" content="Jessica Allen">
+  <meta name="keywords" content="{{ keywords }}">
 </head>
 <body>
-  {% include "partials/header.liquid" %}
-
-  <main>
+  <div class="bg-fixed">
     {{ content }}
-  </main>
-
-  {% include "partials/footer.liquid" %}
-
-  <script>
-    document.querySelector('.nav__toggle').addEventListener('click', function () {
-      document.querySelector('.nav__links').classList.toggle('nav__links--open');
-    });
-  </script>
+  </div>
 </body>
 </html>
