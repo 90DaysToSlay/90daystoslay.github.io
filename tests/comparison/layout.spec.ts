@@ -19,22 +19,31 @@ for (const pageInfo of PAGES) {
       const viewport = testInfo.project.name;
       const results: Record<string, { original: Record<string, string> | null; static: Record<string, string> | null }> = {};
 
+      // Load original site ONCE, extract all selectors
+      await loadPage(page, `${ORIGINAL}${pageInfo.path}`);
+      const originalStyles: Record<string, Record<string, string> | null> = {};
       for (const { name, selector } of KEY_SELECTORS) {
-        // Original
-        await loadPage(page, `${ORIGINAL}${pageInfo.path}`);
-        const originalStyles = await extractComputedStyles(page, selector);
+        originalStyles[name] = await extractComputedStyles(page, selector);
+      }
 
-        // Static
-        await loadPage(page, `${STATIC}${pageInfo.path}`);
-        const staticStyles = await extractComputedStyles(page, selector);
+      // Load static site ONCE, extract all selectors
+      await loadPage(page, `${STATIC}${pageInfo.path}`);
+      const staticStyles: Record<string, Record<string, string> | null> = {};
+      for (const { name, selector } of KEY_SELECTORS) {
+        staticStyles[name] = await extractComputedStyles(page, selector);
+      }
 
-        results[name] = { original: originalStyles, static: staticStyles };
+      // Compare
+      for (const { name } of KEY_SELECTORS) {
+        const orig = originalStyles[name];
+        const stat = staticStyles[name];
+        results[name] = { original: orig, static: stat };
 
-        if (originalStyles && staticStyles) {
+        if (orig && stat) {
           const diffs: string[] = [];
-          for (const prop of Object.keys(originalStyles)) {
-            if (originalStyles[prop] !== staticStyles[prop]) {
-              diffs.push(`${prop}: "${originalStyles[prop]}" → "${staticStyles[prop]}"`);
+          for (const prop of Object.keys(orig)) {
+            if (orig[prop] !== stat[prop]) {
+              diffs.push(`${prop}: "${orig[prop]}" → "${stat[prop]}"`);
             }
           }
           if (diffs.length > 0) {
