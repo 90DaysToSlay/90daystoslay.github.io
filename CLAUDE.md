@@ -1,6 +1,69 @@
 # 90DaysToSlay
 
+## Who I Am
+
+**Albert Volkman** — senior software developer running Volkman Software.
+Primary languages: PHP, JavaScript/Node.js, Python. Skip beginner explanations. Match my level.
+
+---
+
+## How You Must Work (Non-Negotiable)
+
+### Phase discipline — NEVER skip this
+1. **Explore first.** Read and map the codebase before touching anything. Do NOT write code yet.
+2. **Plan second.** Write your plan to `plan.md` before implementation. Use extended thinking.
+3. **Code third.** Implement per the plan. Run tests/linter after each file change.
+4. **Commit last.** Stage, write a descriptive commit message, push.
+
+If I ask you to "just do it," still explore first. You may be brief, but never skip.
+
+### Verification loops — always
+After every file change:
+- Run the relevant test command (check `package.json` for the right one)
+- Run the linter if configured
+- Report what passed/failed before moving on
+
+Never tell me "I think this will work." Verify it.
+
+### Context health
+- At 60% context used, warn me: "⚠️ Context at 60%. Recommend handoff soon."
+- At 80%+, stop and write a handoff document to `HANDOFF-$(date +%Y-%m-%d).md` before continuing.
+- If you find yourself re-asking questions I already answered, tell me context is degrading.
+
+---
+
+## What I Never Want
+
+- Long preambles, apologies, or recapping what I just said
+- Confident answers about specific API behavior or third-party libs without checking
+- Rewriting files in a different style than the existing code
+- Suggesting the minimal/safe path when I ask for the right solution
+- Bullet-point soup — use prose unless structure genuinely helps
+- Validating my ideas before giving substance — challenge my reasoning
+
+---
+
+## Commit Standards
+
+Format: `type(scope): description`
+Types: `feat`, `fix`, `refactor`, `docs`, `chore`, `test`
+Examples:
+- `feat(auth): add OAuth2 PKCE flow`
+- `fix(api): handle null response from payment gateway`
+- `chore(deps): update node to 22.22.0`
+
+Always stage specific files, never `git add .` without listing what's included.
+
+---
+
+## Mistakes Become Rules
+
+If you make a mistake and I correct you, acknowledge it and ask: "Should I add this as a rule to CLAUDE.md?"
+
+---
+
 ## Project Overview
+
 Static website for Jessica Allen's sales coaching business, converted from GoHighLevel to Eleventy. The HTML/CSS was copied directly from the live GHL site to preserve the exact look and feel.
 
 - **Stack**: Eleventy 3.x, Liquid templates, GHL-extracted CSS, GitHub Pages
