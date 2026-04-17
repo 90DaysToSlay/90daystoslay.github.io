@@ -47,11 +47,6 @@ Never tell me "I think this will work." Verify it.
 
 Format: `type(scope): description`
 Types: `feat`, `fix`, `refactor`, `docs`, `chore`, `test`
-Examples:
-- `feat(auth): add OAuth2 PKCE flow`
-- `fix(api): handle null response from payment gateway`
-- `chore(deps): update node to 22.22.0`
-
 Always stage specific files, never `git add .` without listing what's included.
 
 ---
@@ -64,14 +59,13 @@ If you make a mistake and I correct you, acknowledge it and ask: "Should I add t
 
 ## Project Overview
 
-Static website for Jessica Allen's sales coaching business, converted from GoHighLevel to Eleventy. The HTML/CSS was copied directly from the live GHL site to preserve the exact look and feel.
+Static website for Jessica Allen's sales coaching business. The HTML/CSS/JS was copied verbatim from the live GoHighLevel site at www.90daystoslay.biz. No build step — the `site/` directory is deployed directly to GitHub Pages.
 
-- **Stack**: Eleventy 3.x, Liquid templates, GHL-extracted CSS, GitHub Pages
-- **Deploy**: GitHub Actions → GitHub Pages (auto on push to main)
+- **Stack**: Static HTML/CSS/JS (copied from GHL), GitHub Pages
+- **Deploy**: GitHub Actions → GitHub Pages (auto on push to main, deploys `site/`)
 
 ## Development Commands
-- `npm run build` — Build to `_site/`
-- `npm start` — Dev server at localhost:8080
+- `npm start` — Serve `site/` locally on port 8080
 - `NODE_ENV=development npm run test:compare` — Run full Playwright comparison suite
 - `NODE_ENV=development npm run test:compare:visual` — Screenshots only
 - `NODE_ENV=development npm run test:compare:report` — Open Playwright HTML report
@@ -79,22 +73,17 @@ Static website for Jessica Allen's sales coaching business, converted from GoHig
 Note: `NODE_ENV=development` is required because the container defaults to production, which skips devDependencies.
 
 ## Key File Paths
-- `src/` — Source files (templates, CSS, data, images)
-- `src/_data/site.json` — Global site URL
-- `src/_includes/layouts/base.liquid` — Base HTML layout (head, fonts, CSS links)
-- `src/assets/css/ghl-styles.css` — Extracted GHL inline styles (preserves original class names)
-- `src/assets/css/entry.css` — GHL framework CSS (section/row/column layout system)
-- `src/assets/css/button.css` — GHL button component CSS
-- `src/assets/images/` — All site images (downloaded from GHL CDN)
-- `eleventy.config.js` — Eleventy configuration
+- `site/` — Static site root (deployed directly, no build step)
+- `site/index.html` — Homepage (verbatim GHL HTML with local asset paths)
+- `site/speaker/index.html` — Speaker bio and booking
+- `site/resources/index.html` — Worksheet download, Slay in a Box product
+- `site/speaker-page/index.html` — Speaker page (duplicate from GHL)
+- `site/assets/css/` — GHL framework CSS (entry.css, button.css, etc.)
+- `site/assets/js/email-decode.min.js` — Cloudflare email obfuscation decoder
+- `site/assets/images/` — All site images (downloaded from GHL CDN)
+- `site/assets/icons/` — Social media SVG icons
+- `site/CNAME` — Custom domain (www.90daystoslay.biz)
 - `tests/` — Playwright comparison test suite
-
-## Pages
-- `src/index.html` → `/` — Homepage
-- `src/speaker.html` → `/speaker/` — Speaker bio and booking
-- `src/resources.html` → `/resources/` — Worksheet download, Slay in a Box product
-- `src/speaker-page.liquid` → `/speaker-page/` — Meta-refresh redirect to /speaker/
-- `src/404.html` → `/404.html` — Custom 404
 
 ## Testing
 Playwright test suite compares the static site (90daystoslay.github.io) against the original GHL site (www.90daystoslay.biz):

@@ -4,6 +4,7 @@
   "description": "90DaysToSlay - Sales coaching by Jessica Allen",
   "scripts": {
     "build": "npx @11ty/eleventy",
+    "build:prod": "npx @11ty/eleventy && node scripts/purge-css.mjs",
     "start": "npx @11ty/eleventy --serve",
     "test:compare": "npx playwright test --config=tests/playwright.config.ts",
     "test:compare:visual": "npx playwright test visual --config=tests/playwright.config.ts",
@@ -26,9 +27,14 @@
     "@11ty/eleventy": "^3.1.5"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^8.0.0",
     "@playwright/test": "^1.59.1",
     "diff": "^8.0.4",
     "pixelmatch": "^7.1.0",
-    "pngjs": "^7.0.0"
+    "png-to-ico": "^3.0.1",
+    "pngjs": "^7.0.0",
+    "postcss": "^8.5.10",
+    "purgecss": "^8.0.0",
+    "sharp": "^0.34.5"
   }
 }

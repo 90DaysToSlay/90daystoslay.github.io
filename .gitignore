@@ -1,5 +1,6 @@
 node_modules/
 _site/
+.scratch/
 .DS_Store
 *.log
 tests/reports/
