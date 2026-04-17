@@ -1,12 +1,7 @@
 import { PurgeCSS } from 'purgecss';
 import { readFileSync, writeFileSync, statSync } from 'fs';
 
-const cssFiles = [
-  '_site/assets/css/styles.css',
-  '_site/assets/css/home.css',
-  '_site/assets/css/speaker.css',
-  '_site/assets/css/resources.css',
-];
+const cssFiles = ['_site/assets/css/styles.css'];
 
 const result = await new PurgeCSS().purge({
   content: ['_site/**/*.html'],

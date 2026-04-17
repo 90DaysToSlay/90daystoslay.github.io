@@ -29,6 +29,7 @@
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^8.0.0",
     "@playwright/test": "^1.59.1",
+    "cssnano": "^7.1.5",
     "diff": "^8.0.4",
     "pixelmatch": "^7.1.0",
     "png-to-ico": "^3.0.1",
