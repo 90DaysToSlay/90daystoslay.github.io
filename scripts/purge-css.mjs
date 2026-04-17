@@ -1,5 +1,7 @@
 import { PurgeCSS } from 'purgecss';
 import { readFileSync, writeFileSync, statSync } from 'fs';
+import postcss from 'postcss';
+import cssnano from 'cssnano';
 
 const cssFiles = ['_site/assets/css/styles.css'];
 
@@ -37,8 +39,21 @@ const result = await new PurgeCSS().purge({
 
 for (const r of result) {
   const sizeBefore = statSync(r.file).size;
-  writeFileSync(r.file, r.css);
+  // Purge first, then minify with cssnano (keeps declaration order intact).
+  const minified = await postcss([
+    cssnano({
+      preset: [
+        'default',
+        {
+          mergeRules: false,
+          mergeLonghand: false,
+          reduceIdents: false,
+        },
+      ],
+    }),
+  ]).process(r.css, { from: undefined, to: r.file });
+  writeFileSync(r.file, minified.css);
   const sizeAfter = statSync(r.file).size;
   const pct = ((1 - sizeAfter / sizeBefore) * 100).toFixed(1);
-  console.log(`${r.file}: ${(sizeBefore/1024).toFixed(1)}KB → ${(sizeAfter/1024).toFixed(1)}KB (${pct}% reduction)`);
+  console.log(`${r.file}: ${(sizeBefore / 1024).toFixed(1)}KB → ${(sizeAfter / 1024).toFixed(1)}KB (${pct}% reduction)`);
 }
