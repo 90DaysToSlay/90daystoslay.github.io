@@ -7102,11 +7102,6 @@ img {
 p + p {
   margin-top: auto;
 }
-
-.empty-component-min-height {
-  min-height: 100px;
-  pointer-events: none;
-}
 .items-center {
   align-items: center;
 }
@@ -8528,9 +8523,6 @@ iframe[data-v-2f714085] {
   font-weight: 900;
   margin-right: 5px;
 }
-.bp-container {
-  padding: 5px 0;
-}
 .separator {
   align-items: center;
   display: flex;
@@ -8607,14 +8599,6 @@ iframe[data-v-2f714085] {
   position: relative;
   width: 100%;
 }
-.payment-bar,
-.shipping-bar {
-  background-color: #e5e7eb;
-  height: 2px;
-  position: absolute;
-  top: 7px;
-  width: 100%;
-}
 .form-payment {
   padding: 10px;
 }
@@ -8686,13 +8670,6 @@ iframe[data-v-2f714085] {
 }
 .product-title .item:last-child {
   text-align: right;
-}
-.divider-product {
-  background-color: #888;
-  height: 2px;
-  margin: 6px 0;
-  opacity: 0.3;
-  width: 100%;
 }
 .address-title,
 .payment-title {
