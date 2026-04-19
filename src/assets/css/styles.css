@@ -7187,9 +7187,6 @@ p + p {
     background-attachment: scroll !important;
   }
 }
-.radius0 {
-  border-radius: 0;
-}
 .radius10 {
   border-radius: 10px;
 }
