@@ -9,7 +9,9 @@
     "test:compare": "npx playwright test --config=tests/playwright.config.ts",
     "test:compare:visual": "npx playwright test visual --config=tests/playwright.config.ts",
     "test:compare:content": "npx playwright test content --config=tests/playwright.config.ts",
-    "test:compare:report": "npx playwright show-report tests/reports/playwright-report"
+    "test:compare:report": "npx playwright show-report tests/reports/playwright-report",
+    "snapshot": "node scripts/visual-snapshot.mjs",
+    "diff": "node scripts/visual-diff.mjs"
   },
   "repository": {
     "type": "git",
