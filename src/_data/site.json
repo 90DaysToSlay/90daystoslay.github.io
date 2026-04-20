@@ -1,3 +1,7 @@
 {
-  "url": "https://www.90daystoslay.biz"
+  "url": "https://www.90daystoslay.biz",
+  "calendly": {
+    "main": "https://calendly.com/90daystoslay",
+    "vibeCheck": "https://calendly.com/90daystoslay/vibe-check"
+  }
 }
