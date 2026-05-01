@@ -1,37 +1,37 @@
 <script>
-(function() {
-  var popup = document.getElementById('nav-menu-popup');
-  if (!popup) return;
+  (function () {
+    var popup = document.getElementById("nav-menu-popup");
+    if (!popup) return;
 
-  var hamburger = document.querySelector('.nav-menu-mobile');
-  var closeBtn = popup.querySelector('.close-menu');
-  var popupUl = popup.querySelector('.nav-menu');
-  var desktopNav = document.querySelector('.nav-menu-desktop');
+    var hamburger = document.querySelector(".nav-menu-mobile");
+    var closeBtn = popup.querySelector(".close-menu");
+    var popupUl = popup.querySelector(".nav-menu");
+    var desktopNav = document.querySelector(".nav-menu-desktop");
 
-  // Clone desktop links into mobile popup
-  if (desktopNav && popupUl && !popupUl.children.length) {
-    var items = desktopNav.querySelectorAll('.menu-item');
-    for (var i = 0; i < items.length; i++) {
-      popupUl.appendChild(items[i].cloneNode(true));
+    // Clone desktop links into mobile popup
+    if (desktopNav && popupUl && !popupUl.children.length) {
+      var items = desktopNav.querySelectorAll(".menu-item");
+      for (var i = 0; i < items.length; i++) {
+        popupUl.appendChild(items[i].cloneNode(true));
+      }
     }
-  }
 
-  function openMenu() {
-    popup.style.display = '';
-    popup.classList.remove('hide');
-  }
+    function openMenu() {
+      popup.style.display = "";
+      popup.classList.remove("hide");
+    }
 
-  function closeMenu() {
-    popup.style.display = 'none';
-    popup.classList.add('hide');
-  }
+    function closeMenu() {
+      popup.style.display = "none";
+      popup.classList.add("hide");
+    }
 
-  if (hamburger) hamburger.addEventListener('click', openMenu);
-  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if (hamburger) hamburger.addEventListener("click", openMenu);
+    if (closeBtn) closeBtn.addEventListener("click", closeMenu);
 
-  // Close on clicking outside menu body
-  popup.addEventListener('click', function(e) {
-    if (e.target === popup) closeMenu();
-  });
-})();
+    // Close on clicking outside menu body
+    popup.addEventListener("click", function (e) {
+      if (e.target === popup) closeMenu();
+    });
+  })();
 </script>
