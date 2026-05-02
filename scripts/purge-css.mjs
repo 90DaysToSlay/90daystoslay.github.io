@@ -45,8 +45,8 @@ for (const r of result) {
       preset: [
         'default',
         {
-          mergeRules: false,
-          mergeLonghand: false,
+          mergeRules: true,
+          mergeLonghand: true,
           reduceIdents: false,
         },
       ],
