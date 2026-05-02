@@ -5968,3 +5968,14 @@ iframe[data-v-2f714085] {
     font-size: 15px !important;
   }
 }
+
+/* === Unified text container styles (overrides per-instance .cheading-X etc.) === */
+.text-output {
+  background-color: var(--transparent) !important;
+  color: var(--text-color) !important;
+  font-family: var(--headlinefont) !important;
+  word-break: break-word;
+}
+.text-output strong {
+  color: inherit;
+}
