@@ -2,6 +2,26 @@
   --color-mc98cl1o: #ed258b;
 }
 
+/* === Skip-to-content link (a11y) === */
+.skip-link {
+  background: var(--color-mc98cl1o);
+  color: var(--white);
+  font-family: var(--headlinefont);
+  font-weight: 700;
+  left: 0;
+  padding: 12px 20px;
+  position: absolute;
+  text-decoration: none;
+  top: -100px;
+  transition: top 0.2s;
+  z-index: 100;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--color-lzn3ow5s);
+}
+
+
 /* === Button components (replace per-instance .cbutton-* rules) === */
 .btn-wrapper {
   margin: 0;
