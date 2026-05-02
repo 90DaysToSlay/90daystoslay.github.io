@@ -1,0 +1,48 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ site.url }}/#organization",
+      "name": "#90DaysToSlay",
+      "legalName": "#90DaysToSlay, LLC",
+      "url": "{{ site.url }}/",
+      "logo": "{{ site.url }}/assets/images/logo-hero.png",
+      "founder": { "@id": "{{ site.url }}/#person" },
+      "sameAs": [
+        "https://www.linkedin.com/in/jessica--allen/",
+        "https://www.youtube.com/@90DaysToSlay",
+        "https://www.facebook.com/profile.php?id=61555410304866"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-512-981-8669",
+        "email": "[email protected]",
+        "contactType": "customer service"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "{{ site.url }}/#person",
+      "name": "Jessica Allen",
+      "jobTitle": "Sales Strategist",
+      "description": "Sales coach helping founders and teams ditch the cringe and turn sales into something they actually want to do.",
+      "worksFor": { "@id": "{{ site.url }}/#organization" },
+      "url": "{{ site.url }}/speaker/",
+      "image": "{{ site.url }}/assets/images/jessica-headshot.png",
+      "sameAs": [
+        "https://www.linkedin.com/in/jessica--allen/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}/",
+      "name": "#90DaysToSlay",
+      "description": "Sales coaching that isn't cringe.",
+      "publisher": { "@id": "{{ site.url }}/#organization" }
+    }
+  ]
+}
+</script>
