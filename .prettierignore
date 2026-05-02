@@ -10,13 +10,3 @@ package-lock.json
 # by adding closing tags, which breaks the wrapper structure.
 src/_includes/body-open-*.html
 src/_includes/partials/copyright-*.html
-
-# Top-level page files are machine-generated GHL exports.
-# Reformatting them introduces text-node whitespace the minifier
-# can't perfectly recover from, causing visual layout shifts.
-# Hand-edits to these are usually small attribute swaps that
-# don't need pretty-printing.
-src/index.html
-src/speaker/index.html
-src/resources/index.html
-src/speaker-page/index.html
