@@ -34,6 +34,7 @@
     "@playwright/test": "^1.59.1",
     "cssnano": "^7.1.5",
     "diff": "^8.0.4",
+    "eleventy-plugin-redirects": "^1.0.0",
     "html-minifier-terser": "^7.2.0",
     "jsdom": "^29.0.2",
     "pixelmatch": "^7.1.0",
