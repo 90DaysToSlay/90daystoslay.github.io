@@ -4876,3 +4876,19 @@ picture {
   height: auto;
   max-width: 100%;
 }
+
+/* === Client logos row === */
+.client-logos {
+  align-items: center;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+.client-logos img {
+  height: auto;
+  max-width: 100%;
+}
+@media (max-width: 600px) {
+  .client-logos { grid-template-columns: 1fr; }
+}
