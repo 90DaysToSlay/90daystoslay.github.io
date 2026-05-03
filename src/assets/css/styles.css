@@ -4774,3 +4774,10 @@ picture {
   height: auto;
   max-width: 100%;
 }
+
+/* === Section dividers (decorative texture strips) === */
+.divider {
+  background: url(/assets/images/bg-dark-texture.png) center/cover;
+  height: 60px;
+  pointer-events: none;
+}
