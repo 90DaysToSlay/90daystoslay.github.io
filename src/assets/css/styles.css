@@ -4760,3 +4760,17 @@ picture {
   height: 30px;
   width: 30px;
 }
+
+/* === Hero (logo banner, repeated across pages) === */
+.hero {
+  background:
+    url(/assets/images/bg-purple-texture.png) center/cover repeat,
+    var(--white);
+  display: flex;
+  justify-content: center;
+  padding: 30px 20px;
+}
+.hero img {
+  height: auto;
+  max-width: 100%;
+}
