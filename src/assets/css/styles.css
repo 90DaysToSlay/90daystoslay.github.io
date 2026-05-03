@@ -4822,3 +4822,57 @@ picture {
   font-weight: 700;
   margin: 0 0 8px;
 }
+
+/* === Pricing card grid === */
+.section {
+  margin: 0 auto;
+  max-width: 1170px;
+  padding: 60px 20px;
+}
+.section-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.pricing-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 768px) {
+  .pricing-grid { grid-template-columns: 1fr; }
+}
+.pricing-card {
+  background: var(--white);
+  border: 1px solid var(--color-lzn3ow5s);
+  border-radius: 10px;
+  padding: 30px;
+}
+.pricing-card .price {
+  color: var(--color-mc98cl1o);
+  font-size: 32px !important;
+  font-weight: 700;
+  margin: 0;
+}
+.pricing-card .price-meta {
+  color: var(--text-color);
+  margin: 0 0 20px;
+}
+.pricing-card .callout {
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-mc98cl1o);
+}
+.slay-box-promo {
+  align-items: center;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 60px;
+}
+@media (max-width: 768px) {
+  .slay-box-promo { grid-template-columns: 1fr; }
+}
+.slay-box-promo img {
+  height: auto;
+  max-width: 100%;
+}
