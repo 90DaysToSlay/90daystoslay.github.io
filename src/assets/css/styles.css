@@ -4711,3 +4711,13 @@ iframe[data-v-2f714085] {
   text-shadow: 0 0 0 transparent !important;
   text-transform: none !important;
 }
+
+/* === Background overlay positioning (replaces per-element inline styles) === */
+.bg.bgCover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
