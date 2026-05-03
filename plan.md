@@ -2,64 +2,50 @@
 
 Branch: `markup-modernization`
 
-## Goal
+## What landed
 
-Replace the GHL-exported markup with simple, semantic HTML and slim CSS, with no visual regression at any breakpoint.
+| Phase | Change | Impact | Visual diff |
+|---|---|---|---|
+| 1.2 | Remove 15 unused `@keyframes` | -4.2KB CSS source | 0.018% |
+| 1.3 | Drop `<div id="__nuxt">` + `nuxt-route-announcer` from body-open | -1KB across partials | 0.017% |
+| 1.4 | Merge `body-open-{nav,no-nav}.html` + drop `bodyType` frontmatter | One source-of-truth wrapper | 0.018% |
+| 2.1 | **Replace 14 hashed buttons with `.btn`/`.btn-yellow` component** | **-22KB CSS, -140 hashed rules** | 0.099% |
+| 2.2 | Re-prune source CSS (PurgeCSS after button consolidation) | -9KB CSS | 0.093% |
+| 3 | **Format all source HTML files for human readability** | Page files: 1 line → 405-942 lines | 0.097% |
+| 4.1 | Strip 8 more zero-CSS class names from HTML | -4KB HTML | 0.098% |
 
-## Guardrails
+### Numbers
 
-- Visual snapshot harness (`scripts/visual-snapshot.mjs` + `scripts/visual-diff.mjs`) is the gate. 8 viewports × 3 pages = 24 screenshots per check.
-- Threshold: **≤ 0.5%** per screenshot vs the rolling baseline. Any candidate exceeding this is reverted.
-- Every commit follows: change → `npm run build:prod` → snapshot → diff → if pass, commit; if fail, revert.
-- Rolling baseline: re-baseline at the end of each phase so subsequent phases have a fresh reference.
-- All work on `markup-modernization` branch. Push periodically. Merge to `main` when project is done.
+| | Before (master-baseline) | After |
+|---|---|---|
+| Built CSS (deploy) | 158KB total HTML+CSS | 132KB total (**-16%**) |
+| Source CSS | 228KB (1295 rules) | 190KB (933 rules, **-28%** rules) |
+| Hashed-class CSS rules | 741 | 478 (**-263**) |
+| Source HTML readability | minified single line | formatted multi-line |
+| All visual snapshots | baseline | all 24 viewports ≤ 0.099% diff |
 
-## Phases
+## Approach proven out
 
-### Phase 1 — CSS-only safe wins (no markup risk)
+The visual-regression harness (`scripts/visual-snapshot.mjs` + `visual-diff.mjs`) is the load-bearing safety mechanism. Every commit on this branch was verified at 24 screenshots (8 viewports × 3 pages) before landing. Three candidates were attempted and reverted when they exceeded the 0.5% threshold:
 
-1.1 Strip `.hl_page-preview--content` prefix from CSS source selectors. The prefix exists because GHL scoped its preview iframe; on a deployed static site the body never has it as an ancestor — it's always a sibling-level wrapper that we can drop.
-1.2 Audit and remove unused `@keyframes` (38 declared, ~3 referenced).
-1.3 Remove vestigial Vue/Nuxt scaffolding from `body-open-*.html` (`<div id="__nuxt">`, `<span class="nuxt-route-announcer">`).
-1.4 Merge identical `body-open-{nav,no-nav}.html` and inline a clean wrapper into `base.liquid`. Drop the `bodyType` frontmatter.
-1.5 Add semantic landmark tags (`<main>`, `<header>`, `<nav>`, `<footer>`) where structurally clear.
+- **Phase 1.1 — strip `.hl_page-preview--content` prefix**: 6.6% diff (specificity collisions). Reverted.
+- **Phase 4 — image-feature consolidation**: 11.7% diff (subtle per-instance differences). Reverted.
+- **Phase 4 — unwrap useless wrapper divs**: 22.9% diff (flex-child position changes). Reverted.
 
-### Phase 2 — Component-class extraction
+## What's left (for a future session)
 
-2.1 Audit `.cbutton-*` rules and classify variants (likely pink CTA, alt-pink CTA, ghost, etc.).
-2.2 Define `.btn`, `.btn-pink`, `.btn-pink-alt` (or whatever the actual variants are) in source CSS.
-2.3 Replace hashed button classes in HTML with the new semantic ones, one button at a time.
-2.4 Once all buttons converted, delete the old `.cbutton-*` rules and any remaining `.button-<HASH>` wrapper rules.
-2.5 Repeat the same audit/extract/replace/delete cycle for headings, paragraphs, sub-headings.
+These are the bigger swings that need more careful work or HTML rewrites:
 
-### Phase 3 — Section flattening (per-section)
+1. **Section-by-section HTML rewrites** — flatten the 6-level wrapper chain (`section → .inner → row → .inner → column → .vertical .inner → content`) per-section. Each section needs bespoke rewriting to reproduce backgrounds and column ratios. Highest payoff for "simple and semantic" goal.
+2. **Heading/sub-heading/paragraph consolidation** — 21+25+18 = 64 hashed classes with 330 rules. Cluster into 4-5 size variants (`.h-display`, `.h-section`, `.h-small`, `.h-tiny`). Blocked on per-instance font-size variation that requires HTML mapping.
+3. **`hl_page-preview--content` prefix removal** — removing it triggered specificity cascade changes. Doable if combined with rule re-ordering audit.
+4. **Image-feature consolidation** — 4 hashes × 57 rules each. Visual diff exceeded 0.5% on first attempt; needs per-property comparison to find the real differences.
+5. **Cloudflare Insights beacon + `<div id="teleports">`** — vestigial in copyright partials, easy delete once the partials are formatted/balanced.
+6. **Stripe iframes still embedded in `copyright-home.html`** — leftover from GHL export, dead at runtime, ~6KB removable.
 
-For each of the 5 homepage sections, the speaker page sections, the resources page sections, and the footer:
+## Guardrails (still in place)
 
-3.x.1 Read the section's content (text, images, CTAs).
-3.x.2 Write minimal semantic markup using `<section>` + flexbox/grid.
-3.x.3 Replace the section in source.
-3.x.4 Update CSS as needed (add minimal section-specific rule).
-3.x.5 Snapshot + diff. Revert on failure, commit on pass.
-
-### Phase 4 — Final cleanup
-
-4.1 Re-prune source CSS (PurgeCSS may now identify many newly-orphaned hashed rules).
-4.2 Remove the `.c-section`, `.c-row`, `.c-column` framework classes that are no longer needed (their HTML scope is gone).
-4.3 Format the now-clean page files with prettier.
-4.4 Delete unused source files (`body-open-no-nav.html` if not folded already, etc.).
-4.5 Final visual diff vs the absolute pre-modernization baseline at all 8 viewports.
-
-## Commit cadence
-
-- One commit per safely-verifiable change (typically 5-30 minutes of work each).
-- Each commit message starts with the phase label: `phase 1.1: ...`, `phase 2.3: ...`, etc.
-- No bundled commits across phases.
-
-## Definition of done
-
-- Source HTML for `index.html`, `speaker/index.html`, `resources/index.html` reads as clean semantic markup
-- No `.cbutton-*`, `.button-<HASH>` per-instance rules remain in CSS
-- Source CSS is significantly smaller (target: <100KB; currently 228KB)
-- All 24 visual snapshots pass against the pre-modernization baseline (≤0.5% per shot)
-- Branch pushed to origin, ready for review/merge
+- `npm run build:prod` minifies HTML + purges CSS for deploy.
+- `npm run build` / `npm start` ship the formatted source for debugging.
+- `npm run snapshot -- --label X` and `npm run diff -- --before X --after Y` for any future change.
+- `master-baseline` snapshot at `tests/reports/snapshots/master-baseline/` is the absolute reference for this branch.
