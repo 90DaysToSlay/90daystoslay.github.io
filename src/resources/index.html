@@ -10,8 +10,7 @@ eleventyNavigation:
   order: 3
 ---
 
-{% include "partials/nav-header.html" %}
-{% include "partials/hero.html" %}
+{% include "partials/nav-header.html" %} {% include "partials/hero.html" %}
 <section class="intro-grid">
   <div class="intro-media">
     <div class="video-embed">
@@ -29,7 +28,8 @@ eleventyNavigation:
       target="_blank"
       rel="noreferrer noopener"
       aria-label="Book A Vibe Check With Jessica"
-    >Book A Vibe Check With Jessica</a>
+      >Book A Vibe Check With Jessica</a
+    >
   </div>
   <div class="intro-text text-output">
     <p class="kicker">Hey there, friend. I'm so glad you're here.</p>
@@ -55,13 +55,25 @@ eleventyNavigation:
 <section class="intro-grid">
   <div class="intro-text text-output">
     <h2><strong>The badass worksheet ya came for</strong></h2>
-    <h3>You showed up for the WEW sesh… now it's time to start clocking those red, yellow, and "oh no absolutely not" flags. 😂💖</h3>
-    <p>This handy dandy little checklist will help you assess your current clients, your future clients, and the ones you should've dumped three months ago.</p>
+    <h3>
+      You showed up for the WEW sesh… now it's time to start clocking those red, yellow, and "oh no absolutely not"
+      flags. 😂💖
+    </h3>
+    <p>
+      This handy dandy little checklist will help you assess your current clients, your future clients, and the ones you
+      should've dumped three months ago.
+    </p>
     <p>Use it. Love it. Protect your peace and your margins.</p>
   </div>
   <div class="intro-media">
     <img src="/assets/images/worksheet-preview.png" alt="#90DaysToSlay worksheet preview" loading="lazy" />
-    <a class="btn btn-yellow text-center" href="/assets/90daystoslay-worksheet.pdf" download aria-label="Download The Worksheet">Download The Worksheet</a>
+    <a
+      class="btn btn-yellow text-center"
+      href="/assets/90daystoslay-worksheet.pdf"
+      download
+      aria-label="Download The Worksheet"
+      >Download The Worksheet</a
+    >
   </div>
 </section>
 <div class="divider" role="presentation"></div>
@@ -72,7 +84,10 @@ eleventyNavigation:
   </div>
   <div class="intro-text text-output">
     <h2><strong>Not ready for a full slay sesh?</strong></h2>
-    <h3>The perfect DIY brainstorm kit for your next team meeting. Gives you everything you need to run your own internal brainstorm that slays.</h3>
+    <h3>
+      The perfect DIY brainstorm kit for your next team meeting. Gives you everything you need to run your own internal
+      brainstorm that slays.
+    </h3>
     <h3><strong>Inside the Box:</strong></h3>
     <ul>
       <li>🔥 Slay Prompt Cards (Sales, Onboarding, Retention focus)</li>
@@ -82,6 +97,13 @@ eleventyNavigation:
       <li>🤯 Big idea fuel for your team</li>
     </ul>
     <p>Book a Slay Sesh within 30 days and get $250 off (yes, even one with Slay-surance).</p>
-    <a class="btn btn-yellow text-center" href="{{ site.calendly.slayInABox }}" target="_blank" rel="noreferrer noopener" aria-label="Buy Your Brainstorm Sesh Kit $249">Buy Your Brainstorm Sesh Kit $249</a>
+    <a
+      class="btn btn-yellow text-center"
+      href="{{ site.calendly.slayInABox }}"
+      target="_blank"
+      rel="noreferrer noopener"
+      aria-label="Buy Your Brainstorm Sesh Kit $249"
+      >Buy Your Brainstorm Sesh Kit $249</a
+    >
   </div>
 </section>

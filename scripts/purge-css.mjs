@@ -1,23 +1,27 @@
-import { PurgeCSS } from 'purgecss';
-import { readFileSync, writeFileSync, statSync } from 'fs';
-import postcss from 'postcss';
-import cssnano from 'cssnano';
+import { PurgeCSS } from "purgecss";
+import { readFileSync, writeFileSync, statSync } from "fs";
+import postcss from "postcss";
+import cssnano from "cssnano";
 
-const cssFiles = ['_site/assets/css/styles.css'];
+const cssFiles = ["_site/assets/css/styles.css"];
 
 const result = await new PurgeCSS().purge({
-  content: ['_site/**/*.html'],
+  content: ["_site/**/*.html"],
   css: cssFiles,
   safelist: {
     standard: [
-      'hide',
-      'hide-popup',
+      "hide",
+      "hide-popup",
       // Mobile responsive class toggled by JS
       /^--mobile$/,
       // Animate.css
       /^animate__/,
       // Font Awesome
-      /^fa$/, /^fas$/, /^far$/, /^fab$/, /^fa-/,
+      /^fa$/,
+      /^fas$/,
+      /^far$/,
+      /^fab$/,
+      /^fa-/,
     ],
     deep: [
       // GHL builder-generated IDs — any descendant rule keyed on these stays
@@ -43,7 +47,7 @@ for (const r of result) {
   const minified = await postcss([
     cssnano({
       preset: [
-        'default',
+        "default",
         {
           mergeRules: true,
           mergeLonghand: true,
@@ -55,5 +59,7 @@ for (const r of result) {
   writeFileSync(r.file, minified.css);
   const sizeAfter = statSync(r.file).size;
   const pct = ((1 - sizeAfter / sizeBefore) * 100).toFixed(1);
-  console.log(`${r.file}: ${(sizeBefore / 1024).toFixed(1)}KB → ${(sizeAfter / 1024).toFixed(1)}KB (${pct}% reduction)`);
+  console.log(
+    `${r.file}: ${(sizeBefore / 1024).toFixed(1)}KB → ${(sizeAfter / 1024).toFixed(1)}KB (${pct}% reduction)`,
+  );
 }

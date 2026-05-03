@@ -8,5 +8,5 @@ package-lock.json
 # body-open-*.html opens wrapper divs that copyright-*.html closes,
 # with page content sandwiched between. Prettier auto-balances them
 # by adding closing tags, which breaks the wrapper structure.
-src/_includes/body-open-*.html
-src/_includes/partials/copyright-*.html
+src/_includes/body-open.html
+src/_includes/partials/copyright.html
