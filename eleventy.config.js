@@ -1,8 +1,10 @@
 const { clientSideTemplate } = require("eleventy-plugin-redirects/templates");
+const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy("CNAME");
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
   // eleventy-plugin-redirects: ship the plugin's clientSide template via
   // a shortcode but build our own `redirects` collection so it picks up

@@ -2,9 +2,16 @@
   <nav class="site-nav" aria-label="Primary">
     <button class="nav-menu-mobile" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
     <ul class="nav-menu-desktop">
-      <li><a href="/speaker/">Hire Me To Speak At Your Event</a></li>
-      <li><a href="{{ site.calendly.slayInABox }}" target="_blank" rel="noreferrer noopener">Slay In A Box</a></li>
-      <li><a href="/resources/">Resources &amp; Cool Shit</a></li>
+      {%- assign navItems = collections.all | eleventyNavigation -%}
+      {%- for item in navItems -%}
+        <li>
+          {%- if item.url contains "://" -%}
+            <a href="{{ item.url }}" target="_blank" rel="noreferrer noopener">{{ item.title | escape }}</a>
+          {%- else -%}
+            <a href="{{ item.url }}">{{ item.title | escape }}</a>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
     </ul>
   </nav>
 </header>
