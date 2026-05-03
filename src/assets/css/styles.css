@@ -4781,3 +4781,44 @@ picture {
   height: 60px;
   pointer-events: none;
 }
+
+/* === Intro grid (text + media side-by-side) === */
+.intro-grid {
+  align-items: center;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+  max-width: 1170px;
+  padding: 60px 20px;
+}
+@media (max-width: 768px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+  }
+}
+.intro-media {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.video-embed {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+.video-embed iframe {
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.kicker {
+  color: var(--color-mc98cl1o);
+  font-weight: 700;
+  margin: 0 0 8px;
+}
