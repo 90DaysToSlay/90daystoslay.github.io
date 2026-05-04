@@ -1,85 +1,16 @@
-<div class="noBorder c-section c-wrapper section-E0Y-h06jwr" style="" id="section-E0Y-h06jwr">
-  <div class="inner">
-    <div class="row-align-center noBorder c-row c-wrapper row-lYeNHjXPf5" id="row-lYeNHjXPf5">
-      <div class="inner">
-        <div class="noBorder c-column c-wrapper col-giVA3QyqLC" id="col-giVA3QyqLC"><div class="inner"></div></div>
-        <div class="noBorder c-column c-wrapper col-1dw6je1Es7" id="col-1dw6je1Es7">
-          <div class="inner">
-            <div id="nav-menu-v2-u1zU_Wn7wA" class="c-wrapper">
-              <div class="flex relative items-center w-full mega-menu-container menu-layout cnav-menu-v2-u1zU_Wn7wA">
-                <div class="w-full flex justify-start items-center menu-layout">
-                  <div class="w-full">
-                    <div class="text-output">
-                      <div><p></p></div>
-                    </div>
-                  </div>
-                </div>
-                <ul class="nav-menu-ul flex flex-row items-center cart-search-mobile">
-                  <li>
-                    <div
-                      class="py-2 pl-15 rounded-sm text-nowrap pointer nav-menu-mobile"
-                      role="button"
-                      tabindex="0"
-                      aria-label="Toggle menu"
-                    >
-                      <span></span>
-                    </div>
-                  </li>
-                </ul>
-                <ul class="hide-popup nav-menu-ul nav-menu-desktop flex flex-row items-center">
-                  <li class="w-full py-4 flex flex-row justify-end x-icon">
-                    <div class="flex justify-end items-center pointer touch-target" role="button" tabindex="0">
-                      <svg
-                        class="h-5 w-5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="2"
-                        stroke="currentColor"
-                        aria-label="Close"
-                      >
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 7L7 17M7 7l10 10"></path>
-                      </svg>
-                    </div>
-                  </li>
-                  <li id="1" class="nav-spacing-x menu-item">
-                    <a href="/speaker/" aria-label="Hire Me To Speak At Your Event" class="mega-menu-link"
-                      ><div
-                        class="menu-item-title-icon-rotate-reverse py-2 px-15 rounded-sm text-nowrap pointer menu-item-title menu-item-title-icon"
-                      >
-                        Hire Me To Speak At Your Event
-                      </div></a
-                    >
-                  </li>
-                  <li id="2" class="nav-spacing-x menu-item">
-                    <a
-                      href="{{ site.calendly.slayInABox }}"
-                      aria-label="Slay In A Box"
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      class="mega-menu-link"
-                      ><div
-                        class="menu-item-title-icon-rotate-reverse py-2 px-15 rounded-sm text-nowrap pointer menu-item-title menu-item-title-icon"
-                      >
-                        Slay In A Box
-                      </div></a
-                    >
-                  </li>
-                  <li id="menu-item-T8SVO5TNMr" class="nav-spacing-x menu-item">
-                    <a href="/resources/" aria-label="Resources &amp; Cool Shit" class="mega-menu-link"
-                      ><div
-                        class="menu-item-title-icon-rotate-reverse py-2 px-15 rounded-sm text-nowrap pointer menu-item-title menu-item-title-icon"
-                      >
-                        Resources &amp; Cool Shit
-                      </div></a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<header class="site-header">
+  <nav class="site-nav" aria-label="Primary">
+    <button class="nav-menu-mobile" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    <ul class="nav-menu-desktop">
+      {%- assign navItems = collections.all | eleventyNavigation -%} {%- for item in navItems -%}
+      <li>
+        {%- if item.url contains "://" -%}
+        <a href="{{ item.url }}" target="_blank" rel="noreferrer noopener">{{ item.title | escape }}</a>
+        {%- else -%}
+        <a href="{{ item.url }}">{{ item.title | escape }}</a>
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+</header>
