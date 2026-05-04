@@ -1,42 +1,34 @@
-// Convert source raster images to webp (resizing to displayed dimensions
-// where the source is oversized) and remove the original png/jpeg.
-//
-// Run manually after dropping new source images into src/assets/images/.
-// Background textures are kept as PNG because webp loses on them.
+import sharp from 'sharp';
+import { readdirSync, statSync } from 'fs';
+import { join } from 'path';
 
-import sharp from "sharp";
-import { readdirSync, statSync, unlinkSync, writeFileSync } from "fs";
-import { join } from "path";
+const dir = 'src/assets/images';
 
-const dir = "src/assets/images";
-
-// Per-prefix output config. `format: "png"` keeps the source format (used
-// for backgrounds where webp doesn't help). Everything else becomes webp.
-//
-// We deliberately don't resize raster sources here. Layout for several
-// images (.intro-media img, .slay-box-promo img) currently relies on the
-// intrinsic dimensions of the source, so changing them would require
-// matching CSS work. webp conversion alone yields ~70% size reduction.
 const config = {
-  "client-logo": { quality: 80, format: "webp" },
-  "slay-in-a-box": { quality: 80, format: "webp" },
-  "worksheet-preview": { quality: 80, format: "webp" },
-  "jessica-": { quality: 80, format: "webp" },
-  "speaker-photo": { quality: 80, format: "webp" },
-  "speaker-badge": { quality: 80, format: "webp" },
-  "testimonial-": { quality: 80, format: "webp" },
-  "bg-": { quality: 75, format: "png" },
-  "logo-hero": { quality: 85, format: "webp" },
+  // Client logos: displayed small, resize to 400px wide
+  'client-logo': { maxWidth: 400, quality: 80 },
+  // Product/content images: 800px max
+  'slay-in-a-box': { maxWidth: 800, quality: 80 },
+  'worksheet-preview': { maxWidth: 800, quality: 80 },
+  // Headshots/speaker photos: 600px max
+  'jessica-': { maxWidth: 600, quality: 80 },
+  'speaker-photo': { maxWidth: 600, quality: 80 },
+  // Testimonial avatars: already small, just compress
+  'testimonial-': { maxWidth: 400, quality: 80 },
+  // Backgrounds: keep large but compress
+  'bg-': { maxWidth: 1600, quality: 75 },
+  // Logo: keep as-is, just compress
+  'logo-hero': { maxWidth: null, quality: 80 },
 };
 
 function getConfig(filename) {
   for (const [prefix, cfg] of Object.entries(config)) {
     if (filename.startsWith(prefix)) return cfg;
   }
-  return { maxWidth: 800, quality: 80, format: "webp" };
+  return { maxWidth: 800, quality: 80 };
 }
 
-const files = readdirSync(dir).filter((f) => /\.(png|jpe?g)$/i.test(f));
+const files = readdirSync(dir).filter(f => /\.(png|jpe?g)$/i.test(f));
 
 for (const file of files) {
   const filepath = join(dir, file);
@@ -44,27 +36,22 @@ for (const file of files) {
   const cfg = getConfig(file);
 
   let pipeline = sharp(filepath);
+  const meta = await pipeline.metadata();
 
-  const ext = cfg.format === "webp" ? ".webp" : ".png";
-  const outPath = filepath.replace(/\.(png|jpe?g)$/i, ext);
-
-  if (cfg.format === "webp") {
-    const buf = await pipeline.webp({ quality: cfg.quality }).toBuffer();
-    writeFileSync(outPath, buf);
-  } else {
-    const buf = await pipeline
-      .png({ quality: cfg.quality, compressionLevel: 9 })
-      .toBuffer();
-    writeFileSync(outPath, buf);
+  if (cfg.maxWidth && meta.width > cfg.maxWidth) {
+    pipeline = pipeline.resize(cfg.maxWidth);
   }
 
-  // Remove the source if its extension differs from the output (webp
-  // conversion deletes the original png/jpeg).
-  if (outPath !== filepath) unlinkSync(filepath);
+  if (file.endsWith('.png')) {
+    pipeline = pipeline.png({ quality: cfg.quality, compressionLevel: 9 });
+  } else {
+    pipeline = pipeline.jpeg({ quality: cfg.quality, mozjpeg: true });
+  }
 
-  const sizeAfter = statSync(outPath).size;
+  const buf = await pipeline.toBuffer();
+  await sharp(buf).toFile(filepath);
+
+  const sizeAfter = statSync(filepath).size;
   const pct = ((1 - sizeAfter / sizeBefore) * 100).toFixed(1);
-  console.log(
-    `${file} → ${outPath.split("/").pop()}: ${(sizeBefore / 1024).toFixed(0)}KB → ${(sizeAfter / 1024).toFixed(0)}KB (${pct}% reduction)`,
-  );
+  console.log(`${file}: ${(sizeBefore/1024).toFixed(0)}KB → ${(sizeAfter/1024).toFixed(0)}KB (${pct}% reduction)`);
 }

@@ -5,10 +5,3 @@ _site/
 *.log
 tests/reports/
 test-results/
-
-# Personal/local Claude infrastructure (not part of the project)
-.claude/
-.kiro/
-commands/
-HANDOFF-*.md
-plan.md
