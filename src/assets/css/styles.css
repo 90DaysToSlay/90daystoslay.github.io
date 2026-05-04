@@ -3411,6 +3411,8 @@ html {
   background: var(--white);
   color: var(--text-color);
   display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
   padding: 8px 15px;
   text-decoration: none;
 }
