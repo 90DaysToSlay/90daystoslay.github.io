@@ -813,21 +813,10 @@ h4 {
     font-weight: 700;
   }
   .site-nav .nav-menu-desktop {
-    background-color: var(--white);
-    display: block;
-    height: 100vh;
-    left: 0;
-    overflow-y: scroll;
-    padding-bottom: 8rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 999;
-  }
-  .site-nav .hide-popup {
-    display: none !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
   }
 }
 #col-giVA3QyqLC > .inner {
