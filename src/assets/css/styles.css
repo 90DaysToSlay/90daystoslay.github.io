@@ -29,6 +29,7 @@
   box-shadow: 0 0 0 0 transparent;
   color: var(--white);
   font-family: var(--headlinefont);
+  font-size: 25px;
   font-weight: 700;
   letter-spacing: 0;
   padding: 12px 20px;
@@ -36,6 +37,11 @@
   text-decoration: none;
   text-shadow: 0 0 0 transparent;
   transition: 0.2s;
+}
+@media (max-width: 480px) {
+  .btn {
+    font-size: 16px;
+  }
 }
 .btn-yellow {
   background-color: var(--color-lzn3qzhy);
