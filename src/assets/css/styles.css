@@ -80,6 +80,7 @@ h4 {
   border-radius: 10px;
   box-shadow: 0 0 0 0 transparent;
   color: var(--white);
+  display: inline-block;
   font-family: var(--headlinefont);
   font-size: 25px;
   font-weight: 700;
@@ -90,9 +91,33 @@ h4 {
   text-shadow: 0 0 0 transparent;
   transition: 0.2s;
 }
+/* Beat the .text-output a, .text-output a * { color: var(--link-color)
+   !important } rule below — buttons live inside .text-output containers
+   but should keep their white-on-pink palette, not the blue link color. */
+.text-output a.btn,
+.text-output a.btn * {
+  color: var(--white) !important;
+}
 @media (max-width: 480px) {
   .btn {
     font-size: 16px;
+  }
+}
+/* Two-line buttons: master used a main heading + sub heading inside the
+   same anchor. Wrap each label in <span class="btn-main"> / <span class
+   ="btn-sub"> to stack the lines and shrink the second one. */
+.btn-main,
+.btn-sub {
+  display: block;
+}
+.btn-sub {
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 2px;
+}
+@media (max-width: 480px) {
+  .btn-sub {
+    font-size: 12px;
   }
 }
 .btn-yellow {
