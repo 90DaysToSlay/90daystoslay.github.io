@@ -3288,6 +3288,17 @@ html {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  /* Without min-width: 0 the grid track expands to the intrinsic image
+     size (e.g. 800px for slay-in-a-box.webp), squeezing the sibling
+     column down to a sliver. */
+  min-width: 0;
+}
+.intro-media img {
+  height: auto;
+  max-width: 100%;
+}
+.intro-text {
+  min-width: 0;
 }
 .video-embed {
   height: 0;
