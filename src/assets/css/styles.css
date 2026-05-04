@@ -20,7 +20,13 @@ h3,
 h4 {
   font-family: var(--headlinefont);
   line-height: 1.3;
-  margin: 0;
+  margin: 0 0 8px;
+}
+p {
+  margin: 0 0 1em;
+}
+ul {
+  margin: 0 0 1em;
 }
 h1 {
   font-size: 32px;
@@ -2575,17 +2581,12 @@ body {
   margin: 0;
   padding: 0;
 }
-.text-output ul li {
-  padding-left: 1.5em;
+.text-output ul {
+  list-style: none;
+  padding-left: 0;
 }
-.text-output ul li:before {
-  display: inline-block;
-  font-weight: 700;
-  margin-left: -1.5em;
-  margin-right: 0.3em;
-  text-align: right;
-  white-space: nowrap;
-  width: 1.2em;
+.text-output ul li {
+  margin-bottom: 4px;
 }
 .background {
   background-color: unset !important;
@@ -2595,10 +2596,6 @@ h2,
 h3,
 h5 {
   font-weight: 500;
-  margin: unset;
-}
-p {
-  margin: unset;
 }
 h1:empty:after,
 h2:empty:after,
@@ -3149,6 +3146,7 @@ html {
 
 /* === Unified typography (overrides per-instance heading-X rules) === */
 .text-output h1 {
+  color: var(--color-l7rm0vkr) !important;
   font-size: 32px !important;
   font-weight: 500 !important;
   line-height: 1.3 !important;
@@ -3313,20 +3311,36 @@ html {
   border-radius: 10px;
   padding: 30px;
 }
+.pricing-card h3 {
+  font-weight: 700 !important;
+  text-align: center;
+  text-transform: uppercase;
+}
 .pricing-card .price {
   color: var(--color-mc98cl1o);
   font-size: 32px !important;
   font-weight: 700;
   margin: 0;
+  text-align: center;
 }
 .pricing-card .price-meta {
-  color: var(--text-color);
+  color: var(--color-mc98cl1o);
+  font-size: 12px !important;
   margin: 0 0 20px;
+  text-align: center;
+  text-transform: uppercase;
 }
 .pricing-card .callout {
-  font-weight: 700;
-  font-style: italic;
+  font-weight: 700 !important;
+  margin: 0 0 12px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.pricing-card h4 {
   color: var(--color-mc98cl1o);
+  font-weight: 700 !important;
+  text-align: center;
+  text-transform: uppercase;
 }
 .slay-box-promo {
   align-items: center;

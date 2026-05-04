@@ -18,12 +18,14 @@ function* walk(dir) {
 
 const options = {
   collapseWhitespace: true,
-  conservativeCollapse: false,
-  // Strip whitespace between adjacent inline tags. Critical here because
-  // prettier formatting introduces newlines between inline elements
-  // (<a>, <span>, <strong>, etc.) that browsers would otherwise render
-  // as visible single spaces, shifting layout vs the pre-format baseline.
-  collapseInlineTagWhitespace: true,
+  // Preserve trailing spaces inside text nodes — html-minifier-terser
+  // would otherwise strip the space after "Good. " or "I create " before
+  // a following <strong>/<a>, producing "Good.Because" / "createworkshops"
+  // in rendered text.
+  conservativeCollapse: true,
+  // Same reason — don't eat the space the browser would render between
+  // e.g. <strong>Good.</strong> Because.
+  collapseInlineTagWhitespace: false,
   removeComments: true,
   removeRedundantAttributes: true,
   removeEmptyAttributes: false,
