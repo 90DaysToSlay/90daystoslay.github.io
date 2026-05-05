@@ -6,6 +6,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("CNAME");
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
+  eleventyConfig.addGlobalData("year", () => new Date().getFullYear());
+
   // eleventy-plugin-redirects: ship the plugin's clientSide template via
   // a shortcode but build our own `redirects` collection so it picks up
   // .html pages (the plugin's built-in collection only scans *.md).
